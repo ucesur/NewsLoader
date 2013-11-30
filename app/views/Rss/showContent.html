@@ -1,0 +1,17 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+#{if article}
+	<div class="content">
+		<h2 class="content-title">
+			${article.title}
+		</h2>
+		${article.content}
+	</div>
+#{/if}
+<bold>----------Tags----------</bold>
+#{list items:tags, as:'tag'}
+		<div class="post">	
+				${tag.tag}	
+		</div>
+#{/list}

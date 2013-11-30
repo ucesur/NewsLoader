@@ -1,0 +1,26 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+#{list items:articles, as:'articless'}
+		<div class="post">
+			<h2 class="post-title">
+				<a href="@{Rss.showContent(articless.id)}">${articless.title}</a>
+			</h2>
+			<div class="post-metadata">
+				<span class="post-author">
+					#{if articless.author}
+						by ${articless.author}
+					#{/if}
+					#{else}
+						by unknown
+					#{/else}
+				</span>
+				<span class="post-date">${articless.pubDate}</span>
+			</div>
+			<div class="post-content">
+				${articless.description.length() > 200 ? articless.description[0..200].nl2br() : articless.description.nl2br()}
+			</div>
+		</div>
+#{/list}
+<div class="next">
+	<a href="@{Rss.readNext(i)}">next-></a>
+</div>
